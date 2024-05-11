@@ -5,20 +5,28 @@ The frontend component continuously polls the backend for updated data and displ
 
 ![CoinMarketCarp Scraper](assets/app_screenshot.png)
 
+# Scraper Recording
+![CoinMarketCarp Scraper Recoding](assets/coinmarketcap_scrapper.mp4)
+
+# Website Recording
+![CoinMarketCarp Scraper Website](assets/coinmarketcap_website.mp4)
+
+
 ## To run the project on Local machine:
 
-Please install nvm on your system before running this project
-Node version : v18.19.0
-Npm version : v10.2.3
+- Please install nvm on your system before running this project
+- Node version : v18.19.0
+- Npm version : v10.2.3
 
 ### Base setup
 
 `nvm use` or `nvm use v18.19.0`
+
 `npm install` or `npm i`
 
 ### For local development
 
-`npm start`
+`npm run dev`
 
 ### For production build
  
