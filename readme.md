@@ -13,13 +13,13 @@ Npm version : v10.2.3
 
 ### Base setup
 
-nvm use or nvm use v18.19.0
-npm install or npm i
+`nvm use` or `nvm use v18.19.0`
+`npm install` or `npm i`
 
 ### For local development
 
-npm start
+`npm start`
 
 ### For production build
  
-npm run build
+`npm run build`
