@@ -57,7 +57,7 @@ export const TableContent = ({ cryptoData }: TableContentProps) => {
             align="right"
             sx={{ color: generateTextColor(row.hourly_change) }}
           >
-            <Box display="flex" alignItems="center">
+            <Box display="flex" alignItems="center" justifyContent="flex-end">
               {renderIcon(row.hourly_change)} {renderText(row.hourly_change)}
             </Box>
           </StyledTableCell>
@@ -65,7 +65,7 @@ export const TableContent = ({ cryptoData }: TableContentProps) => {
             align="right"
             sx={{ color: generateTextColor(row.daily_change) }}
           >
-            <Box display="flex" alignItems="center">
+            <Box display="flex" alignItems="center" justifyContent="flex-end">
               {renderIcon(row.daily_change)} {renderText(row.daily_change)}
             </Box>
           </StyledTableCell>
@@ -73,7 +73,7 @@ export const TableContent = ({ cryptoData }: TableContentProps) => {
             align="right"
             sx={{ color: generateTextColor(row.weekly_change) }}
           >
-            <Box display="flex" alignItems="center">
+            <Box display="flex" alignItems="center" justifyContent="flex-end">
               {renderIcon(row.weekly_change)} {renderText(row.weekly_change)}
             </Box>
           </StyledTableCell>

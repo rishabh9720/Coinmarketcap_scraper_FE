@@ -13,7 +13,7 @@ import { TableSkeleton } from "../../components/TableSkeleton";
 import { CryptoResponseData } from "../../models/commonModels";
 import { TableContent } from "../../components/TableContent";
 
-const REFERESH_RATE = 12000;
+const REFERESH_RATE = 8000;
 
 export const Dashboard = () => {
   /** States */
