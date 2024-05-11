@@ -1,1 +1,1 @@
-export * from './TableSkeleton';
+export * from "./TableSkeleton";

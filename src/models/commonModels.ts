@@ -1,4 +1,4 @@
-export type CryptoResponseData =  {
+export type CryptoResponseData = {
   id: number;
   created_at: string;
   updated_at: string;
@@ -12,5 +12,5 @@ export type CryptoResponseData =  {
   trade_volume_usd: string;
   trade_volume_crypto: string;
   circulating_supply: string;
-  logo: string
-}
+  logo: string;
+};

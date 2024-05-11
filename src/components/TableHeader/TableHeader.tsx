@@ -1,9 +1,5 @@
-import {
-    TableHead,
-    TableRow,
-    
-  } from "@mui/material";
-import {StyledTableHeader} from './styles';
+import { TableHead, TableRow } from "@mui/material";
+import { StyledTableHeader } from "./styles";
 
 export const TableHeader = () => {
   return (
@@ -17,9 +13,7 @@ export const TableHeader = () => {
         <StyledTableHeader align="right">7d %</StyledTableHeader>
         <StyledTableHeader align="right">Market Cap</StyledTableHeader>
         <StyledTableHeader align="right">Volume(24h)</StyledTableHeader>
-        <StyledTableHeader align="right">
-          Circulating Supply
-        </StyledTableHeader>
+        <StyledTableHeader align="right">Circulating Supply</StyledTableHeader>
       </TableRow>
     </TableHead>
   );

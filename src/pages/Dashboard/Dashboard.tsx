@@ -1,50 +1,52 @@
 import { useEffect, useState } from "react";
-import { fetchMarketData, generateTextColor } from "../../utils/commonUtils";
 import {
   Table as MuiTable,
-  TableBody,
   TableContainer,
-  TableRow,
   Typography,
   Box,
   Paper,
 } from "@mui/material";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+
+import { fetchMarketData } from "../../utils/commonUtils";
 import { TableHeader } from "../../components/TableHeader";
-import { CryptoResponseData } from "./types";
-import { StyledCryptoName, StyledTableCell } from "./styles";
 import { TableSkeleton } from "../../components/TableSkeleton";
+import { CryptoResponseData } from "../../models/commonModels";
+import { TableContent } from "../../components/TableContent";
 
 const REFERESH_RATE = 12000;
 
 export const Dashboard = () => {
+  /** States */
   const [cryptoData, setCryptoData] = useState<CryptoResponseData[]>([]);
+
+  /**
+   * Fetches market data and updates state at regular intervals.
+   * @returns void
+   */
   useEffect(() => {
+    /**
+     * Fetches market data and updates state.
+     * @returns A promise that resolves when the data is fetched and state is updated.
+     */
     fetchMarketData().then((data) => {
       setCryptoData(data);
     });
+
+    // Fetch and update data at regular intervals
     const intervalId = setInterval(() => {
       fetchMarketData().then((data) => {
         setCryptoData(data);
       });
     }, REFERESH_RATE);
 
+    // Cleanup function to clear the interval when the component unmounts
     return () => {
       clearInterval(intervalId);
     };
   }, []);
 
-  const renderIcon = (value: string) => {
-    return value.startsWith("-") ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />;
-  };
-
-  const renderText = (value: string) => {
-    return value.startsWith("-") ? value.slice(1) : value;
-  };
-
   return (
-    <Box py={4} px={8} minHeight="100vh">
+    <Box pt={4} px={8} height="100vh">
       <Typography fontWeight={700} fontSize={32} color="black" mb={4}>
         CoinMarketCap Scrapper
       </Typography>
@@ -62,80 +64,7 @@ export const Dashboard = () => {
         >
           <MuiTable stickyHeader>
             <TableHeader />
-            <TableBody>
-              {cryptoData.map((row, index) => (
-                <TableRow
-                  key={row.currency_name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <StyledTableCell>{index + 1}</StyledTableCell>
-                  <StyledTableCell>
-                    <StyledCryptoName>
-                      <img src={row.logo} alt="BTC logo" height={24} />
-                      <Typography
-                        component="span"
-                        fontSize={14}
-                        sx={{ color: "grey" }}
-                        fontWeight={900}
-                      >
-                        {row.currency_name}{" "}
-                      </Typography>
-                      <Typography
-                        component="span"
-                        fontSize={14}
-                        sx={{ color: "grey" }}
-                      >
-                        {row.symbol || ""}
-                      </Typography>
-                    </StyledCryptoName>
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.current_price || "Error fetching price"}
-                  </StyledTableCell>
-                  <StyledTableCell
-                    align="right"
-                    sx={{ color: generateTextColor(row.hourly_change) }}
-                  >
-                    <Box display="flex" alignItems="center">
-                      {renderIcon(row.hourly_change)}{" "}
-                      {renderText(row.hourly_change)}
-                    </Box>
-                  </StyledTableCell>
-                  <StyledTableCell
-                    align="right"
-                    sx={{ color: generateTextColor(row.daily_change) }}
-                  >
-                    <Box display="flex" alignItems="center">
-                      {renderIcon(row.daily_change)}{" "}
-                      {renderText(row.daily_change)}
-                    </Box>
-                  </StyledTableCell>
-                  <StyledTableCell
-                    align="right"
-                    sx={{ color: generateTextColor(row.weekly_change) }}
-                  >
-                    <Box display="flex" alignItems="center">
-                      {renderIcon(row.weekly_change)}{" "}
-                      {renderText(row.weekly_change)}
-                    </Box>
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.market_capital || "Error fetching market cap"}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.trade_volume_usd || "Error fetching volume in dollars"}
-                    <Typography sx={{ color: "grey" }}>
-                      {row.trade_volume_crypto ||
-                        "Error fetching volume in crypto"}
-                    </Typography>
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.circulating_supply ||
-                      "Error fetching circulating supply"}
-                  </StyledTableCell>
-                </TableRow>
-              ))}
-            </TableBody>
+            <TableContent cryptoData={cryptoData} />
           </MuiTable>
         </TableContainer>
       )}
