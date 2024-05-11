@@ -6,10 +6,10 @@ The frontend component continuously polls the backend for updated data and displ
 ![CoinMarketCarp Scraper](assets/app_screenshot.png)
 
 # Scraper Recording
-![CoinMarketCarp Scraper Recoding](assets/coinmarketcap_scrapper.mp4)
+https://drive.google.com/file/d/1R-vEw7R1ZLr9W0D1g2-rcSfJFg3UOOWB/view?usp=sharing
 
 # Website Recording
-![CoinMarketCarp Scraper Website](assets/coinmarketcap_website.mp4)
+https://drive.google.com/file/d/1MFgVW8JNqv1v2mVPedlW16I9-Cany8T9/view?usp=sharing
 
 
 ## To run the project on Local machine:
